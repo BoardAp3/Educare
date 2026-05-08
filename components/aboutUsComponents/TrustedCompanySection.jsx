@@ -41,24 +41,27 @@ function TrustedCompanySection() {
   ];
 
   return (
-    <section className="py-12  bg-bg-grey shadow-[0px_0px_50px_0px_rgba(87,87,86,0.12)] mx-auto flex flex-col items-center gap-10">
-        <h2 className="text-[32px] leading-10 font-bricolage font-display font-normal text-slate text-center">
-          Trusted By Students All Around Canada
-        </h2>
+    <section className="py-8 md:py-12 px-4 bg-bg-grey shadow-[0px_0px_50px_0px_rgba(87,87,86,0.12)] flex flex-col items-center gap-8 md:gap-10">
+      <h2 className="text-2xl md:text-[32px] leading-snug font-bricolage font-display text-slate text-center">
+        Trusted By Students All Around Canada
+      </h2>
 
-      <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="w-full max-w-324 h-14 rounded-lg px-10 gap-6 flex items-center justify-center">
+      <div className="w-full max-w-7xl mx-auto">
+        <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10">
           {universities.map((uni, index) => (
             <div
               key={index}
-              className="flex items-center justify-center h-auto w-auto"
+              className="
+                flex justify-center items-center
+                w-[45%] sm:w-[30%] md:w-auto
+              "
             >
               <Image
                 src={uni.logo}
                 alt={uni.name}
                 width={uni.width}
                 height={uni.height}
-                className="h-full w-auto object-contain"
+                className="h-10 md:h-12 w-auto object-contain"
               />
             </div>
           ))}
