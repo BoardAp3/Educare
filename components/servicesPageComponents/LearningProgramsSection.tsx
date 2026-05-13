@@ -15,14 +15,14 @@ const LearningProgramsSection = () => {
     <section className="max-w-7xl mx-auto px-4 sm:px-6 py-16">
       <div className="flex flex-col gap-8">
         {/* Top tabs */}
-        <div className="overflow-x-auto pb-1 border-b border-yellow-light">
+        <div className="overflow-x-auto pb-10 border-b-2 border-yellow-light">
           <div className="inline-flex gap-3 flex-wrap min-w-max ">
             {learningProgramsTabs.map((program) => (
               <button
                 key={program.id}
                 type="button"
                 onClick={() => setActiveProgram(program)}
-                className={`rounded-3xl p-5 text-5.5 font-medium transition-all duration-200 whitespace-nowrap shadow-sm ${activeProgram.id === program.id
+                className={`cursor-pointer rounded-3xl p-5 text-[22px] font-normal transition-all duration-200 whitespace-nowrap shadow-sm ${activeProgram.id === program.id
                     ? "bg-slate-900 text-white"
                     : "bg-white text-slate-800 group hover:bg-[#7C9FE3]"
                   }`}
@@ -33,10 +33,10 @@ const LearningProgramsSection = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 xl:grid-cols-[1.05fr_0.95fr] gap-8 w-289.25">
+        <div className="grid grid-cols-1 xl:grid-cols-[1.05fr_0.95fr] gap-8 max-w-289.25">
           {/* Left sidebar */}
           <div className="space-y-6">
-            <div className="relative w-full lg:w-115.25 h-83.5 rounded-lg overflow-visible">
+            <div className="relative lg:max-w-115.25 h-83.5 rounded-lg overflow-visible">
               <Image
                 src={activeProgram.image}
                 alt={activeProgram.heading}

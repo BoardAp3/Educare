@@ -2,6 +2,9 @@
 
 import React, { useState } from "react";
 import FAQAccordion from "./FAQAccordion";
+import DemoVideosSection from "./DemoVideosSection";
+import PracticeMaterialSection from "./PracticeMaterialSection";
+import PracticeTestsSection from "./PracticeTestsSection";
 import { faqData } from "./faqData";
 
 interface ResourceTab {
@@ -23,60 +26,50 @@ const ResourcesTabsSection = () => {
         switch (activeTabId) {
             case 1:
                 return (
-                    <div className="space-y-8">
-                        <div className="text-center max-w-2xl mx-auto">
-                            <h2 className="text-4xl font-bricolage font-display text-slate-900 leading-tight mb-4">
-                                Frequently Asked Questions
-                            </h2>
-                            <p className="text-base text-slate-600 leading-7">
-                                Have questions about tutoring formats, schedules, pricing, or
-                                subjects? We&apos;ve answered the most common questions students
-                                and parents ask before enrolling.
-                            </p>
+                    <div className="max-w-[1156px] w-full mx-auto">
+                        <div className="space-y-8">
+                            <div className="text-center max-w-2xl mx-auto">
+                                <h2 className="text-4xl font-bricolage font-display text-slate-900 leading-tight mb-4">
+                                    Frequently Asked Questions
+                                </h2>
+                                <p className="text-base text-slate-600 leading-7">
+                                    Have questions about tutoring formats, schedules, pricing, or
+                                    subjects? We&apos;ve answered the most common questions students
+                                    and parents ask before enrolling.
+                                </p>
+                            </div>
+                            <FAQAccordion items={faqData} />
                         </div>
-                        <FAQAccordion items={faqData} />
                     </div>
                 );
             case 2:
-                return (
-                    <div className="flex items-center justify-center py-16">
-                        <p className="text-xl text-slate-600">Coming Soon</p>
-                    </div>
-                );
+                return <DemoVideosSection />;
             case 3:
-                return (
-                    <div className="flex items-center justify-center py-16">
-                        <p className="text-xl text-slate-600">Coming Soon</p>
-                    </div>
-                );
+                return <PracticeMaterialSection />;
             case 4:
-                return (
-                    <div className="flex items-center justify-center py-16">
-                        <p className="text-xl text-slate-600">Coming Soon</p>
-                    </div>
-                );
+                return <PracticeTestsSection />;
             default:
                 return null;
         }
     };
 
     return (
-        <section className="max-w-324 w-full mx-auto px-4 sm:px-6 py-16">
-            <div className="flex flex-col gap-8">
+        <section className="max-w-[1296px] w-full mx-auto px-4 sm:px-6 py-16">
+            <div className="max-w-[1156px] w-full mx-auto flex flex-col gap-8">
                 {/* Top tabs */}
-                <div className="overflow-x-auto pb-1 border-b border-yellow-light">
+                <div className="overflow-x-auto pb-10 border-b-2 border-yellow-light">
                     <div className="inline-flex gap-3 flex-wrap min-w-max">
                         {resourceTabs.map((tab) => (
                             <button
                                 key={tab.id}
                                 type="button"
                                 onClick={() => setActiveTabId(tab.id)}
-                                className={`rounded-3xl px-5 py-2.5 text-sm font-medium transition-all duration-200 whitespace-nowrap shadow-sm ${activeTabId === tab.id
-                                        ? "bg-slate-900 text-white"
-                                        : "bg-white text-slate-800 hover:bg-[#7C9FE3] hover:text-white"
+                                className={`cursor-pointer rounded-3xl p-5 text-5.5 font-medium transition-all duration-200 whitespace-nowrap shadow-sm ${activeTabId === tab.id
+                                    ? "bg-slate-900 text-white"
+                                    : "bg-white text-slate-800 hover:bg-[#7C9FE3] hover:text-white"
                                     }`}
                             >
-                                {tab.tabTitle}
+                                <p className="text-5.5 group-hover:text-bg-grey">{tab.tabTitle}</p>
                             </button>
                         ))}
                     </div>

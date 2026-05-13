@@ -9,42 +9,48 @@ interface FAQAccordionProps {
 }
 
 const FAQAccordion: React.FC<FAQAccordionProps> = ({ items }) => {
-    const [expandedId, setExpandedId] = useState<number | null>(null);
+    const [openIds, setOpenIds] = useState<number[]>([]);
 
     const toggleExpand = (id: number) => {
-        setExpandedId(expandedId === id ? null : id);
+        setOpenIds((currentOpenIds) =>
+            currentOpenIds.includes(id)
+                ? currentOpenIds.filter((openId) => openId !== id)
+                : [...currentOpenIds, id]
+        );
     };
 
     return (
-        <div className="space-y-0 max-w-3xl">
-            {items.map((item) => (
-                <div key={item.id} className="border-b border-slate-300">
-                    <button
-                        onClick={() => toggleExpand(item.id)}
-                        className="w-full flex items-center justify-between py-5 px-0 text-left hover:opacity-80 transition-opacity"
-                        aria-expanded={expandedId === item.id}
-                    >
-                        <h3 className="text-lg font-medium text-primary leading-6">
-                            {item.question}
-                        </h3>
-                        <div className="shrink-0 ml-4">
-                            {expandedId === item.id ? (
-                                <Minus className="w-6 h-6 text-primary" />
-                            ) : (
-                                <Plus className="w-6 h-6 text-primary" />
-                            )}
-                        </div>
-                    </button>
+        <div className="max-w-239 w-full mx-auto px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20">
+            <div className="flex flex-col gap-10">
+                {items.map((item) => (
+                    <div key={item.id} className="border-b border-slate-300">
+                        <button
+                            onClick={() => toggleExpand(item.id)}
+                            className="w-full flex items-start justify-between pt-5 pb-10 px-0 text-left hover:opacity-80 transition-opacity"
+                            aria-expanded={openIds.includes(item.id)}
+                        >
+                            <h3 className="text-xl font-montserrat font-medium text-primary leading-6">
+                                {item.question}
+                            </h3>
+                            <div className="shrink-0 ml-4">
+                                {openIds.includes(item.id) ? (
+                                    <Minus className="w-7 h-7 text-primary font-extrabold" />
+                                ) : (
+                                    <Plus className="w-7 h-7 text-primary font-extrabold" />
+                                )}
+                            </div>
+                        </button>
 
-                    {expandedId === item.id && (
-                        <div className="pb-5 px-0 animate-in fade-in duration-200">
-                            <p className="text-base text-slate-700 leading-7">
-                                {item.answer}
-                            </p>
-                        </div>
-                    )}
-                </div>
-            ))}
+                        {openIds.includes(item.id) && (
+                            <div className="pb-5 px-0 animate-in fade-in duration-200">
+                                <p className="text-[16px] text-slate-700 leading-7">
+                                    {item.answer}
+                                </p>
+                            </div>
+                        )}
+                    </div>
+                ))}
+            </div>
         </div>
     );
 };
