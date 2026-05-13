@@ -9,6 +9,7 @@ import {
 import "./globals.css";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import WhatsAppFloating from "../components/WhatsAppFloating";
 
 const bricolageGrotesque = Bricolage_Grotesque({
   variable: "--font-bricolage",
@@ -39,6 +40,7 @@ export default function RootLayout({
         <Header />
         {children}
         <Footer />
+        <WhatsAppFloating />
       </body>
     </html>
   );
