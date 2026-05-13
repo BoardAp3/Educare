@@ -8,6 +8,8 @@ const WhatsAppFloating = () => {
   const phoneNumber = "16725147587";
   const whatsappUrl = `https://wa.me/${phoneNumber}`;
 
+  //deploy
+
   return (
     <a
       href={whatsappUrl}
@@ -25,7 +27,7 @@ const WhatsAppFloating = () => {
       <div className="relative flex items-center justify-center w-14 h-14 bg-[#25D366] rounded-full shadow-[0_8px_30px_rgb(37,211,102,0.4)] transition-all duration-300 group-hover:scale-110 group-active:scale-95 group-hover:shadow-[0_12px_40px_rgb(37,211,102,0.6)]">
         {/* Pulsing effect */}
         <div className="absolute inset-0 rounded-full bg-[#25D366] animate-ping opacity-20" />
-        
+
         <svg
           viewBox="0 0 24 24"
           className="w-8 h-8 fill-white"
