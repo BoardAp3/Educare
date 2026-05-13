@@ -1,12 +1,22 @@
+import type { LucideIcon } from "lucide-react";
+import { CalendarDays, Users, Rocket } from "lucide-react";
 import type { PricingCardProps } from "@/components/PricingComponent/PricingCard";
 
-export const pricingSectionContent = {
+export interface PricingCardItem extends Omit<PricingCardProps, "icon"> {
+  icon: LucideIcon;
+}
+
+export const pricingSectionContent: {
+  heading: string;
+  subheading: string;
+  cards: PricingCardItem[];
+} = {
   heading: "Flexible Pricing For Every Learning Goal",
   subheading:
     "Choose from personalized tutoring plans, exam prep programs, and monthly learning packages designed to fit your schedule and academic needs!",
   cards: [
     {
-      icon: "Calendar" as const,
+      icon: CalendarDays,
       title: "Monthly Program",
       subtitle: "Best for consistent growth",
       features: [
@@ -21,7 +31,7 @@ export const pricingSectionContent = {
       ctaText: "Enroll Today!",
     },
     {
-      icon: "Users" as const,
+      icon: Users,
       title: "1 On 1 Tutoring",
       subtitle: "Maximum personalization",
       features: [
@@ -36,7 +46,7 @@ export const pricingSectionContent = {
       ctaText: "Book A Free Session",
     },
     {
-      icon: "Zap" as const,
+      icon: Rocket,
       title: "Exam Booster",
       subtitle: "Intensive exam preparation",
       features: [
@@ -49,5 +59,5 @@ export const pricingSectionContent = {
       priceCaption: "per intensive course",
       ctaText: "Start Preparing",
     },
-  ] as const,
+  ],
 };

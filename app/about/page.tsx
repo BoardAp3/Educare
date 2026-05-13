@@ -1,5 +1,4 @@
 import GeneralHeroSection from "@/components/GeneralComponents/GereralHeroSection";
-import OurApproach from "@/components/aboutUsComponents/OurApproach";
 import MakesUsDifferenceSection from "@/components/aboutUsComponents/MakesUsDifferenceSection";
 import LearningProcess from "@/components/LearningProcess";
 import TrustedCompanySection from "@/components/aboutUsComponents/TrustedCompanySection";
@@ -11,6 +10,7 @@ export async function generateMetadata() {
   const data = await getMetaDataBySlug("page", "about");
   return getMetadata(data, "https://drshreyankeducare.com/about");
 }
+import OurApproach from "@/components/aboutUsComponents/OurApproach";
 
  const AboutUs = () => {
   return (
@@ -22,7 +22,7 @@ export async function generateMetadata() {
         <LearningProcess />
         <ReadAboutTutors />
         <TrustedCompanySection />
-      {/* <OurApproach/> */}
+      {/* <OurApproach /> */}
       </div>
     </main>
     </>

@@ -7,13 +7,19 @@ export async function generateMetadata() {
   const data = await getMetaDataBySlug("page", "services");
   return getMetadata(data, "https://drshreyankeducare.com/services");
 }
+import LearningProgramsSection from '@/components/servicesPageComponents/LearningProgramsSection';
 
 
 const page = () => {
   return (
-    <main className="min-h-screen m-auto bg-white">
+    <>
       <GeneralHeroSection  {...ServicesHeroSectionContent} />
+      <main className="min-h-screen m-auto bg-white">
+      <div className="max-w-324 h-auto flex flex-col gap-45 align-middle justify-center-safe">
+        <LearningProgramsSection />
+      </div>
     </main>
+    </>
   )
 }
 

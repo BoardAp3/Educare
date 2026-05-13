@@ -1,35 +1,22 @@
 import PricingCard from "@/components/PricingComponent/PricingCard";
-import { Calendar, Users, Zap } from "lucide-react";
 import type { PricingCardProps } from "@/components/PricingComponent/PricingCard";
+import type { LucideIcon } from "lucide-react";
 
-interface PricingCard {
-    icon: string;
-    title: string;
-    subtitle: string;
-    features: string[];
-    price: number;
-    oldPrice?: number;
-    priceCaption: string;
-    ctaText: string;
+export interface PricingCardItem extends Omit<PricingCardProps, "icon"> {
+  icon: LucideIcon;
 }
 
 interface PricingSectionProps {
     heading: string;
     subheading: string;
-    cards: PricingCard[];
+    cards: PricingCardItem[];
 }
 
-const iconMap: Record<string, any> = {
-    Calendar,
-    Users,
-    Zap,
-};
-
-export default function PricingSection({
+ const PricingSection =({
     heading,
     subheading,
     cards,
-}: PricingSectionProps) {
+}: PricingSectionProps) => {
     return (
         <section className="py-10 bg-white overflow-hidden">
             <div className="mx-auto w-full max-w-324 flex flex-col gap-10 px-4 sm:px-6 lg:px-8">
@@ -45,24 +32,23 @@ export default function PricingSection({
 
                 {/* Pricing Cards */}
                 <div className="w-full flex flex-col sm:flex-row flex-wrap justify-center gap-10 items-stretch mx-auto">
-                    {cards.map((card, index) => {
-                        const IconComponent = iconMap[card.icon];
-                        return (
-                            <PricingCard
-                                key={index}
-                                icon={IconComponent}
-                                title={card.title}
-                                subtitle={card.subtitle}
-                                features={card.features}
-                                price={card.price}
-                                oldPrice={card.oldPrice}
-                                priceCaption={card.priceCaption}
-                                ctaText={card.ctaText}
-                            />
-                        );
-                    })}
+                    {cards.map((card, index) => (
+                        <PricingCard
+                            key={index}
+                            icon={card.icon}
+                            title={card.title}
+                            subtitle={card.subtitle}
+                            features={card.features}
+                            price={card.price}
+                            oldPrice={card.oldPrice}
+                            priceCaption={card.priceCaption}
+                            ctaText={card.ctaText}
+                        />
+                    ))}
                 </div>
             </div>
         </section>
     );
 }
+
+export default PricingSection;
