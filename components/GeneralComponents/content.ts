@@ -62,3 +62,16 @@ export const ProgramsHeroSectionContent = {
     href: "/contact",
   },
 };
+
+export const ChemistryHeroSectionContent = {
+  heading: "Master Chemistry with\nExpert Personalized Tutoring",
+  description:
+    "Unlock your potential in Chemistry with Dr. Shreyank Educare. Our specialized tutoring simplifies complex concepts, from atomic structures to advanced organic reactions, helping you achieve top grades and exam success.",
+  buttonText: "Book Your Free Trial",
+  buttonVisiblity: true,
+  image: {
+    src: "chemistryHeroImg.png",
+    alt: "Chemistry Tutoring",
+    href: "/contact",
+  },
+};
