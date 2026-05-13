@@ -13,11 +13,12 @@ import {
   Zap,
 } from "lucide-react";
 
-export const metadata: Metadata = {
-  title: "GRE Prep Program | Dr. Shreyank Educare",
-  description:
-    "Personalized GRE coaching focused on improving verbal, quantitative, and analytical writing performance at Dr. Shreyank Educare.",
-};
+import { getMetaDataBySlug, getMetadata } from "@/utils/seoBuilder";
+
+export async function generateMetadata() {
+  const data = await getMetaDataBySlug("programPage", "gre-prep");
+  return getMetadata(data, "https://drshreyankeducare.com/programs/gre-prep");
+}
 
 const SectionHeader = ({ icon: Icon, title }: { icon: any; title: string }) => (
   <div className="flex items-center gap-3 mb-[14px]">

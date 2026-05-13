@@ -5,6 +5,12 @@ import LearningProcess from "@/components/LearningProcess";
 import TrustedCompanySection from "@/components/aboutUsComponents/TrustedCompanySection";
 import { AboutHeroSectionContent } from "@/components/GeneralComponents/content";
 import ReadAboutTutors from "@/components/aboutUsComponents/ReadAboutTutors";
+import { getMetaDataBySlug, getMetadata } from "@/utils/seoBuilder";
+
+export async function generateMetadata() {
+  const data = await getMetaDataBySlug("page", "about");
+  return getMetadata(data, "https://drshreyankeducare.com/about");
+}
 
  const AboutUs = () => {
   return (

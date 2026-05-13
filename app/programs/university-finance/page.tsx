@@ -13,11 +13,12 @@ import {
   Zap,
 } from "lucide-react";
 
-export const metadata: Metadata = {
-  title: "University Finance | Dr. Shreyank Educare",
-  description:
-    "Master advanced university-level finance and certifications with focused academic support at Dr. Shreyank Educare.",
-};
+import { getMetaDataBySlug, getMetadata } from "@/utils/seoBuilder";
+
+export async function generateMetadata() {
+  const data = await getMetaDataBySlug("programPage", "university-finance");
+  return getMetadata(data, "https://drshreyankeducare.com/programs/university-finance");
+}
 
 const SectionHeader = ({ icon: Icon, title }: { icon: any; title: string }) => (
   <div className="flex items-center gap-3 mb-[14px]">

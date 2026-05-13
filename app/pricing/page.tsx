@@ -1,5 +1,11 @@
 import PricingSection from "@/components/PricingComponent/PricingSection";
 import { pricingSectionContent } from "./content";
+import { getMetaDataBySlug, getMetadata } from "@/utils/seoBuilder";
+
+export async function generateMetadata() {
+  const data = await getMetaDataBySlug("page", "pricing");
+  return getMetadata(data, "https://drshreyankeducare.com/pricing");
+}
 
 export default function PricingPage() {
     return (

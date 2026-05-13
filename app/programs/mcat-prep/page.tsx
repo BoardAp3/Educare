@@ -13,11 +13,12 @@ import {
   Zap,
 } from "lucide-react";
 
-export const metadata: Metadata = {
-  title: "MCAT Prep Program | Dr. Shreyank Educare",
-  description:
-    "Comprehensive MCAT coaching focused on improving scores and strengthening content mastery at Dr. Shreyank Educare.",
-};
+import { getMetaDataBySlug, getMetadata } from "@/utils/seoBuilder";
+
+export async function generateMetadata() {
+  const data = await getMetaDataBySlug("programPage", "mcat-prep");
+  return getMetadata(data, "https://drshreyankeducare.com/programs/mcat-prep");
+}
 
 const SectionHeader = ({ icon: Icon, title }: { icon: any; title: string }) => (
   <div className="flex items-center gap-3 mb-[14px]">

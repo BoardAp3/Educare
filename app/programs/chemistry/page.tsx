@@ -13,11 +13,12 @@ import {
   Zap,
 } from "lucide-react";
 
-export const metadata: Metadata = {
-  title: "Chemistry Tutoring | Dr. Shreyank Educare",
-  description:
-    "Master Chemistry with expert personalized tutoring at Dr. Shreyank Educare.",
-};
+import { getMetaDataBySlug, getMetadata } from "@/utils/seoBuilder";
+
+export async function generateMetadata() {
+  const data = await getMetaDataBySlug("programPage", "chemistry");
+  return getMetadata(data, "https://drshreyankeducare.com/programs/chemistry");
+}
 
 const SectionHeader = ({ icon: Icon, title }: { icon: any; title: string }) => (
   <div className="flex items-center gap-3 mb-[14px]">

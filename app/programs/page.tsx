@@ -2,6 +2,12 @@ import React from "react";
 import GeneralHeroSection from "@/components/GeneralComponents/GereralHeroSection";
 import { ProgramsHeroSectionContent } from "@/components/GeneralComponents/content";
 import ProgramsSection from "@/components/programsComponents/ProgramsSection";
+import { getMetaDataBySlug, getMetadata } from "@/utils/seoBuilder";
+
+export async function generateMetadata() {
+  const data = await getMetaDataBySlug("page", "programs");
+  return getMetadata(data, "https://drshreyankeducare.com/programs");
+}
 
 const ProgramsPage = () => {
   return (
