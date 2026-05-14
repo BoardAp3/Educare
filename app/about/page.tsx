@@ -5,7 +5,7 @@ import TrustedCompanySection from "@/components/aboutUsComponents/TrustedCompany
 import { AboutHeroSectionContent } from "@/components/GeneralComponents/content";
 import ReadAboutTutors from "@/components/aboutUsComponents/ReadAboutTutors";
 import { getMetaDataBySlug, getMetadata } from "@/utils/seoBuilder";
-import KeySection from "@/components/GeneralComponents/KeySection";
+import KeySection from "@/components/aboutUsComponents/KeySection";
 
 
 export async function generateMetadata() {
@@ -15,22 +15,22 @@ export async function generateMetadata() {
 import OurApproach from "@/components/aboutUsComponents/OurApproach";
 import TrustedBrands from "@/components/TrustedBrands";
 
- const AboutUs = () => {
+const AboutUs = () => {
   return (
     <>
-    <GeneralHeroSection  {...AboutHeroSectionContent} />
-    <main className="min-h-screen m-auto bg-white">
-      <div className="max-w-324 h-auto flex flex-col gap-45 align-middle justify-center-safe">
-        <MakesUsDifferenceSection />
-        <LearningProcess />
-        <ReadAboutTutors />
-        <TrustedBrands />
-        {/* <OurApproach /> */}
-        <KeySection/>
-      </div>
-    </main>
+      <GeneralHeroSection  {...AboutHeroSectionContent} />
+      <main className="min-h-screen m-auto bg-white">
+        <div className="max-w-324 h-auto flex flex-col gap-45 align-middle justify-center-safe">
+          <MakesUsDifferenceSection />
+          <LearningProcess />
+          <ReadAboutTutors />
+          <TrustedBrands />
+          {/* <OurApproach /> */}
+          <KeySection />
+        </div>
+      </main>
     </>
-    
+
   );
 }
 

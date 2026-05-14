@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Layers } from "lucide-react";
-import { keySectionContent } from "./content";
+import { keySectionContent } from "../GeneralComponents/content";
 
 const iconMap: Record<string, typeof Layers> = {
     layers: Layers,
@@ -11,7 +11,7 @@ const KeySection = () => {
 
     return (
         <div className="max-w-[1296px] w-full mx-auto px-4 sm:px-6">
-            <div className="grid grid-cols-1 xl:grid-cols-[1.3fr_0.95fr_0.75fr] gap-10 py-10 lg:py-14">
+            <div className="grid grid-cols-1 xl:grid-cols-[1.3fr_0.85fr_0.90fr] gap-5 py-10 lg:py-5">
                 <div className="flex items-start gap-[10px]">
                     <div className="relative rounded-[8px] overflow-hidden flex-1 h-[684px]">
                         <Image
@@ -27,9 +27,9 @@ const KeySection = () => {
                     </div>
                 </div>
 
-                <div className="flex flex-col justify-center">
-                    <div className="max-w-lg">
-                        <h2 className="text-4xl sm:text-[32px] font-bricolage font-normal text-slate-900 leading-10 mb-5">
+                <div className="flex flex-col justify-center max-w-[350px]">
+                    <div >
+                        <h2 className="text-4xl sm:text-[48px] font-bricolage font-normal text-slate mb-5">
                             {keySectionContent.heading}
                         </h2>
                         <p className="text-base sm:text-lg text-slate-700 leading-7">
@@ -38,11 +38,11 @@ const KeySection = () => {
                     </div>
                 </div>
 
-                <div className="flex flex-col justify-center gap-10">
+                <div className="flex flex-col justify-center gap-10 max-w-[386px]">
                     {keySectionContent.cards.map((card, index) => (
                         <div key={index} className="bg-white rounded-3xl border border-slate-200 shadow-sm p-6">
                             <div className="inline-block border-b-2 border-yellow-light pb-1 mb-4">
-                                <h3 className="text-[20px] font-bricolage font-display font-normal text-slate-900">
+                                <h3 className="text-[20px] font-bricolage font-display font-normal text-slate">
                                     {card.title}
                                 </h3>
                             </div>

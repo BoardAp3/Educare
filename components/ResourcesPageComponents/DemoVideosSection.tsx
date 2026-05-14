@@ -66,7 +66,7 @@ const DemoVideosSection = () => {
                             <ul className="space-y-3 ml-1 text-[16px] leading-4 font-montserrat text-slate list-disc list-inside">
                                 {demoVideoData.categories.map((category, index) => (
                                     <li key={index} className="py-2 whitespace-break-spaces">
-                                        <span className="font-semibold text-slate-900">{category.title}</span> {category.description}
+                                        <span className="font-medium text-slate">{category.title}</span> {category.description}
                                     </li>
                                 ))}
                             </ul>
