@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { Plus, Minus } from "lucide-react";
-import type { FAQItem } from "./faqData";
+import type { FAQItem } from "./content";
 
 interface FAQAccordionProps {
     items: FAQItem[];
@@ -20,7 +20,7 @@ const FAQAccordion: React.FC<FAQAccordionProps> = ({ items }) => {
     };
 
     return (
-        <div className="max-w-239 w-full mx-auto px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20">
+        <div className="w-full px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20">
             <div className="flex flex-col gap-10">
                 {items.map((item) => (
                     <div key={item.id} className="border-b border-slate-300">

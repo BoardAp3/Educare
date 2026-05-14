@@ -184,7 +184,7 @@ const navLinks = [
   { label: "Services", href: "/services" },
   { label: "Pricing", href: "/pricing" },
   { label: "Resources", href: "/resources" },
-  { label: "FAQ", href: "/faq" },
+  { label: "FAQ", href: "/resources#faq" },
   { label: "Terms & Conditions", href: "/terms" },
   { label: "Privacy Policy", href: "/privacy" },
 ];

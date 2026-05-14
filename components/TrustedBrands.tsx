@@ -23,7 +23,7 @@ export default function TrustedBrands() {
             {brands.map((brand, index) => (
               <div
                 key={index}
-                className="flex items-center justify-center h-[56px] w-[180px]"
+                className="flex items-center justify-center `h-14 w-45"
               >
                 <Image
                   src={brand.src}

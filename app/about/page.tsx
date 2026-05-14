@@ -5,12 +5,15 @@ import TrustedCompanySection from "@/components/aboutUsComponents/TrustedCompany
 import { AboutHeroSectionContent } from "@/components/GeneralComponents/content";
 import ReadAboutTutors from "@/components/aboutUsComponents/ReadAboutTutors";
 import { getMetaDataBySlug, getMetadata } from "@/utils/seoBuilder";
+import KeySection from "@/components/GeneralComponents/KeySection";
+
 
 export async function generateMetadata() {
   const data = await getMetaDataBySlug("page", "about");
   return getMetadata(data, "https://drshreyankeducare.com/about");
 }
 import OurApproach from "@/components/aboutUsComponents/OurApproach";
+import TrustedBrands from "@/components/TrustedBrands";
 
  const AboutUs = () => {
   return (
@@ -21,8 +24,9 @@ import OurApproach from "@/components/aboutUsComponents/OurApproach";
         <MakesUsDifferenceSection />
         <LearningProcess />
         <ReadAboutTutors />
-        <TrustedCompanySection />
-      {/* <OurApproach /> */}
+        <TrustedBrands />
+        {/* <OurApproach /> */}
+        <KeySection/>
       </div>
     </main>
     </>

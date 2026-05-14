@@ -1,78 +1,75 @@
 import Image from "next/image";
 import { BookOpen, Play } from "lucide-react";
+import { demoVideoData } from "./content";
 
 const DemoVideosSection = () => {
     return (
-        <div className="max-w-[1156px] w-full mx-auto">
+        <div className="max-w-[1296px] w-full mx-auto">
             <div className="grid grid-cols-1 xl:grid-cols-[1.05fr_0.95fr] gap-8">
                 <div className="space-y-6">
-                    <div className="relative w-full rounded-[28px] overflow-hidden aspect-[16/9]">
-                        <Image
-                            src="/assets/programsHeroImage.jpg"
-                            alt="Demo videos preview"
-                            fill
-                            className="object-cover"
-                            priority
-                        />
-                        <div className="absolute top-4 right-4 h-12 w-12 rounded-2xl bg-yellow-light text-slate-900 flex items-center justify-center shadow-lg">
-                            <Play className="w-6 h-6" />
+                    <div className="flex items-start gap-3 max-w-[472px]">
+                        <div className="relative flex-1 h-[368px] rounded-lg overflow-hidden aspect-[16/10]">
+                            <Image
+                                src={demoVideoData.imageUrl}
+                                alt={demoVideoData.imageAlt}
+                                fill
+                                className="object-cover h-full w-full"
+                                priority
+                            />
+                        </div>
+                        <div className="shrink-0">
+                            <div className="h-12 w-12 rounded-lg bg-yellow-light text-slate-900 flex items-center justify-center shadow-lg border border-slate-200">
+                                <Play className="w-6 h-6" />
+                            </div>
                         </div>
                     </div>
 
-                    <div className="bg-white rounded-3xl border border-slate-200 shadow-sm p-6">
-                        <h3 className="text-[22px] font-semibold text-slate-900 mb-4">
-                            What You&apos;ll Learn From These Videos
-                        </h3>
-                        <ul className="space-y-3 text-[16px] text-slate-700 leading-7 list-disc list-inside">
-                            <li>Learn how we make complex topics easier</li>
-                            <li>Understand our teaching methodology</li>
-                            <li>Experience our step-by-step explanations</li>
-                            <li>See how personalized tutoring works</li>
-                        </ul>
-                    </div>
+                <div className="grid gap-8">
+              
+                <div
+                  className="bg-white max-w-103.5 rounded-lg border-slate-200 shadow-sm p-5"
+                >
+                  <h3 className="text-[22px] underline underline-offset-4 decoration-yellow-light decoration-2 font-semibold text-slate mb-3">
+                    {demoVideoData.learningPoints.heading}
+                  </h3>
+                  <ul className="space-y-2 text-[16px] text-slate-700 leading-4 list-disc list-inside">
+                    {demoVideoData.learningPoints.pointers.map((point, pointIndex) => (
+                      <li key={pointIndex}>{point}</li>
+                    ))}
+                  </ul>
+                </div>
+            </div>
                 </div>
 
                 <div className="flex flex-col gap-8 py-2.5 px-0">
-                    <div className="space-y-6">
-                        <h2 className="text-4xl sm:text-[40px] font-bricolage font-display font-normal text-slate-900 leading-tight">
-                            See How Our Teaching Works In Real Time, With Our Demo Videos
+                    <div className="max-w-165">
+                        <h2 className="text-4xl sm:text-[32px] font-bricolage font-normal text-slate-900 leading-8.5 mb-5">
+                            {demoVideoData.heading}
                         </h2>
                         <p className="text-base sm:text-lg text-slate-700 leading-7 max-w-3xl">
-                            At Dr. Shreyank Educare, we believe that seeing the teaching process helps students and parents make confident decisions. Our demo videos showcase how we simplify difficult concepts through interactive teaching and personalized instruction.
+                            {demoVideoData.description}
                         </p>
                     </div>
 
-                    <div className="flex items-center gap-3">
-                        <div className="h-11 w-11 rounded-2xl bg-yellow-light text-slate-900 flex items-center justify-center shadow-sm">
-                            <BookOpen className="w-6 h-6" />
-                        </div>
-                        <h3 className="text-[22px] font-semibold text-slate-900">Featured Video Categories</h3>
-                    </div>
-
-                    <div className="grid gap-6">
-                        <div className="space-y-2">
-                            <p className="font-semibold text-slate-900">Mathematics Tutorials</p>
-                            <p className="text-slate-600 leading-7">
-                                From algebra fundamentals to calculus problem-solving, explore how we break down complex math concepts step-by-step.
-                            </p>
-                        </div>
-                        <div className="space-y-2">
-                            <p className="font-semibold text-slate-900">Science Lessons</p>
-                            <p className="text-slate-600 leading-7">
-                                Watch physics, chemistry, and biology sessions that simplify formulas, theories, and applications through visual teaching methods.
-                            </p>
-                        </div>
-                        <div className="space-y-2">
-                            <p className="font-semibold text-slate-900">Test Preparation Sessions</p>
-                            <p className="text-slate-600 leading-7">
-                                See how our tutors help students prepare for competitive exams with strategy-based learning and structured practice.
-                            </p>
-                        </div>
-                        <div className="space-y-2">
-                            <p className="font-semibold text-slate-900">Coding Demonstrations</p>
-                            <p className="text-slate-600 leading-7">
-                                Explore beginner-friendly coding sessions covering programming logic, development fundamentals, and project learning.
-                            </p>
+                    <div className="grid gap-8">
+                        <div className="space-y-4">
+                            <div className="flex items-start gap-2">
+                                <div className="h-8 w-8 rounded-sm bg-yellow-light text-slate-900 flex items-center justify-center">
+                                    <BookOpen className="w-5 h-5" />
+                                </div>
+                                <div>
+                                    <h3 className="text-[22px] font-bricolage font-display font-normal text-slate-900">
+                                        Featured Video Categories
+                                    </h3>
+                                </div>
+                            </div>
+                            <ul className="space-y-3 ml-1 text-[16px] leading-4 font-montserrat text-slate list-disc list-inside">
+                                {demoVideoData.categories.map((category, index) => (
+                                    <li key={index} className="py-2 whitespace-break-spaces">
+                                        <span className="font-semibold text-slate-900">{category.title}</span> {category.description}
+                                    </li>
+                                ))}
+                            </ul>
                         </div>
                     </div>
                 </div>

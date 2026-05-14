@@ -75,3 +75,43 @@ export const ChemistryHeroSectionContent = {
     href: "/contact",
   },
 };
+
+export interface KeySectionCard {
+  title: string;
+  description: string;
+}
+
+export interface KeySectionContent {
+  heading: string;
+  description: string;
+  imageUrl: string;
+  imageAlt: string;
+  icon: string;
+  cards: KeySectionCard[];
+}
+
+export const keySectionContent: KeySectionContent = {
+  heading: "Our Approach, A Structured Learning Process",
+  description:
+    "Success in math and science requires more than memorization; it demands clarity, application, and practice. Our teaching method is built around a simple but effective three-step process.",
+  imageUrl: "/assets/aboutUsPage/profStanding.webp",
+  imageAlt: "Our Approach Image",
+  icon: "layers",
+  cards: [
+    {
+      title: "Building Strong Foundations",
+      description:
+        "We ensure students fully understand the underlying theory before moving to complex problems.",
+    },
+    {
+      title: "Demonstrating Practical Problem-Solving Techniques",
+      description:
+        "Students are guided through step-by-step methods to apply concepts effectively.",
+    },
+    {
+      title: "Reinforcing Learning Through Practice",
+      description:
+        "Consistent practice helps students build confidence, accuracy, and speed over time.",
+    },
+  ],
+};

@@ -5,7 +5,7 @@ import FAQAccordion from "./FAQAccordion";
 import DemoVideosSection from "./DemoVideosSection";
 import PracticeMaterialSection from "./PracticeMaterialSection";
 import PracticeTestsSection from "./PracticeTestsSection";
-import { faqData } from "./faqData";
+import { faqData } from "./content";
 
 interface ResourceTab {
     id: number;
@@ -26,7 +26,7 @@ const ResourcesTabsSection = () => {
         switch (activeTabId) {
             case 1:
                 return (
-                    <div className="max-w-[1156px] w-full mx-auto">
+                    <div className="max-w-[1296px] w-full mx-auto">
                         <div className="space-y-8">
                             <div className="text-center max-w-2xl mx-auto">
                                 <h2 className="text-4xl font-bricolage font-display text-slate-900 leading-tight mb-4">
@@ -54,8 +54,8 @@ const ResourcesTabsSection = () => {
     };
 
     return (
-        <section className="max-w-[1296px] w-full mx-auto px-4 sm:px-6 py-16">
-            <div className="max-w-[1156px] w-full mx-auto flex flex-col gap-8">
+        <section className="max-w-324 mx-auto px-4 sm:px-6 py-16" id="faq">
+            <div className="max-w-289 w-full mx-auto flex flex-col gap-8">
                 {/* Top tabs */}
                 <div className="overflow-x-auto pb-10 border-b-2 border-yellow-light">
                     <div className="inline-flex gap-3 flex-wrap min-w-max">
