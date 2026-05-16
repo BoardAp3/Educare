@@ -1,7 +1,6 @@
 import GeneralHeroSection from "@/components/GeneralComponents/GereralHeroSection";
 import MakesUsDifferenceSection from "@/components/aboutUsComponents/MakesUsDifferenceSection";
 import LearningProcess from "@/components/LearningProcess";
-import TrustedCompanySection from "@/components/aboutUsComponents/TrustedCompanySection";
 import { AboutHeroSectionContent } from "@/components/GeneralComponents/content";
 import ReadAboutTutors from "@/components/aboutUsComponents/ReadAboutTutors";
 import { getMetaDataBySlug, getMetadata } from "@/utils/seoBuilder";
@@ -12,7 +11,6 @@ export async function generateMetadata() {
   const data = await getMetaDataBySlug("page", "about");
   return getMetadata(data, "https://drshreyankeducare.com/about");
 }
-import OurApproach from "@/components/aboutUsComponents/OurApproach";
 import TrustedBrands from "@/components/TrustedBrands";
 
 const AboutUs = () => {
@@ -25,7 +23,6 @@ const AboutUs = () => {
           <LearningProcess />
           <ReadAboutTutors />
           <TrustedBrands />
-          {/* <OurApproach /> */}
           <KeySection />
         </div>
       </main>
