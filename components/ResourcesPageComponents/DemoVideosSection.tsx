@@ -2,7 +2,16 @@ import Image from "next/image";
 import { BookOpen, Play } from "lucide-react";
 import { demoVideoData } from "./content";
 
-const DemoVideosSection = () => {
+interface DemoVideosSectionProps {
+    data?: any;
+}
+
+const DemoVideosSection = ({ data }: DemoVideosSectionProps) => {
+    const content = data || demoVideoData;
+    const learningPoints = content.learningPoints || demoVideoData.learningPoints;
+    const categories = content.categories || demoVideoData.categories;
+    const imageUrl = data?.image || demoVideoData.imageUrl;
+
     return (
         <div className="max-w-[1296px] w-full mx-auto">
             <div className="grid grid-cols-1 xl:grid-cols-[1.05fr_0.95fr] gap-8">
@@ -10,8 +19,8 @@ const DemoVideosSection = () => {
                     <div className="flex items-start gap-3 max-w-[472px]">
                         <div className="relative flex-1 h-[368px] rounded-lg overflow-hidden aspect-[16/10]">
                             <Image
-                                src={demoVideoData.imageUrl}
-                                alt={demoVideoData.imageAlt}
+                                src={imageUrl}
+                                alt={content.imageAlt || demoVideoData.imageAlt}
                                 fill
                                 className="object-cover h-full w-full"
                                 priority
@@ -24,30 +33,27 @@ const DemoVideosSection = () => {
                         </div>
                     </div>
 
-                <div className="grid gap-8">
-              
-                <div
-                  className="bg-white max-w-103.5 rounded-lg border-slate-200 shadow-sm p-5"
-                >
-                  <h3 className="text-[22px] underline underline-offset-4 decoration-yellow-light decoration-2 font-semibold text-slate mb-3">
-                    {demoVideoData.learningPoints.heading}
-                  </h3>
-                  <ul className="space-y-2 text-[16px] text-slate-700 leading-4 list-disc list-inside">
-                    {demoVideoData.learningPoints.pointers.map((point, pointIndex) => (
-                      <li key={pointIndex}>{point}</li>
-                    ))}
-                  </ul>
-                </div>
-            </div>
+                    <div className="grid gap-8">
+                        <div className="bg-white max-w-103.5 rounded-lg border-slate-200 shadow-sm p-5">
+                            <h3 className="text-[22px] underline underline-offset-4 decoration-yellow-light decoration-2 font-semibold text-slate mb-3">
+                                {learningPoints.heading}
+                            </h3>
+                            <ul className="space-y-2 text-[16px] text-slate-700 leading-4 list-disc list-inside">
+                                {learningPoints.pointers?.map((point: string, pointIndex: number) => (
+                                    <li key={pointIndex}>{point}</li>
+                                ))}
+                            </ul>
+                        </div>
+                    </div>
                 </div>
 
                 <div className="flex flex-col gap-8 py-2.5 px-0">
                     <div className="max-w-165">
                         <h2 className="text-4xl sm:text-[32px] font-bricolage font-normal text-slate-900 leading-8.5 mb-5">
-                            {demoVideoData.heading}
+                            {content.heading}
                         </h2>
-                        <p className="text-base sm:text-lg text-slate-700 leading-7 max-w-3xl">
-                            {demoVideoData.description}
+                        <p className="text-base sm:text-lg text-slate-700 leading-7 max-w-3xl whitespace-pre-wrap">
+                            {content.description}
                         </p>
                     </div>
 
@@ -63,8 +69,8 @@ const DemoVideosSection = () => {
                                     </h3>
                                 </div>
                             </div>
-                            <ul className="space-y-3 ml-1 text-[16px] leading-4 font-montserrat text-slate list-disc list-inside">
-                                {demoVideoData.categories.map((category, index) => (
+                            <ul className="space-y-3 ml-1 text-[16px] leading-relaxed font-montserrat text-slate list-disc list-inside">
+                                {categories.map((category: any, index: number) => (
                                     <li key={index} className="py-2 whitespace-break-spaces">
                                         <span className="font-medium text-slate">{category.title}</span> {category.description}
                                     </li>

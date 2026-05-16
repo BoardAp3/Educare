@@ -19,7 +19,11 @@ const resourceTabs: ResourceTab[] = [
     { id: 4, tabTitle: "Practice Tests" },
 ];
 
-const ResourcesTabsSection = () => {
+interface ResourcesTabsSectionProps {
+    initialData?: any;
+}
+
+const ResourcesTabsSection = ({ initialData }: ResourcesTabsSectionProps) => {
     const [activeTabId, setActiveTabId] = useState<number>(1);
 
     const renderContent = () => {
@@ -38,16 +42,16 @@ const ResourcesTabsSection = () => {
                                     and parents ask before enrolling.
                                 </p>
                             </div>
-                            <FAQAccordion items={faqData} />
+                            <FAQAccordion items={initialData?.faqs || faqData} />
                         </div>
                     </div>
                 );
             case 2:
-                return <DemoVideosSection />;
+                return <DemoVideosSection data={initialData?.videosSection} />;
             case 3:
-                return <PracticeMaterialSection />;
+                return <PracticeMaterialSection data={initialData?.practiceMaterialSection} />;
             case 4:
-                return <PracticeTestsSection />;
+                return <PracticeTestsSection data={initialData?.practiceTestsSection} />;
             default:
                 return null;
         }

@@ -8,17 +8,20 @@ export async function generateMetadata() {
   return getMetadata(data, "https://drshreyankeducare.com/resources");
 }
 import ResourcesTabsSection from '@/components/ResourcesPageComponents/ResourcesTabsSection';
+import { getResourcePageData } from '@/utils/seoBuilder';
 
 
-const page = () => {
+const Page = async () => {
+  const resourceData = await getResourcePageData();
+
   return (
     <>
       <GeneralHeroSection  {...ResourcesHeroSectionContent} />
       <main className="min-h-screen max-w-467.5  px-4 sm:px-6 py-16 m-auto bg-white">
-          <ResourcesTabsSection />
+          <ResourcesTabsSection initialData={resourceData} />
       </main>
     </>
   )
 }
 
-export default page
+export default Page

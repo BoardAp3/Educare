@@ -3,6 +3,9 @@ import { metaData } from './metaData'
 import { page } from './page'
 import { programPage } from './programPage'
 
+import { resourcePage } from './resourcePage'
+import { lead } from './lead'
+
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [metaData, page, programPage],
+  types: [metaData, page, programPage, resourcePage, lead],
 }

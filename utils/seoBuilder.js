@@ -3,6 +3,30 @@
 import { client } from "../sanity/lib/client";
 import { urlFor } from "../sanity/lib/image";
 
+export const getResourcePageData = async () => {
+  const query = `*[_type == "resourcePage" && slug.current == "resources"][0]{
+    ...,
+    "videosSection": {
+      ...,
+      "image": videosSection.image.asset->url
+    },
+    "practiceMaterialSection": {
+      ...,
+      "image": practiceMaterialSection.image.asset->url,
+      "downloadMaterials": practiceMaterialSection.downloadMaterials[]{
+        ...,
+        "fileUrl": file.asset->url
+      }
+    },
+    "practiceTestsSection": {
+      ...,
+      "image": practiceTestsSection.image.asset->url
+    }
+  }`;
+  const data = await client.fetch(query);
+  return data;
+};
+
 export const getPageData = async (type) => {
   const query = `*[_type == "${type}"][0]`;
   const data = await client.fetch(query);

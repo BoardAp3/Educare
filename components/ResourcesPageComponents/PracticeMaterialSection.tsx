@@ -1,18 +1,27 @@
 import Image from "next/image";
-import { Blocks, Download, FileText, Lightbulb, Sparkles } from "lucide-react";
+import { Blocks, Download, FileText, Sparkles } from "lucide-react";
 import { practiceMaterialData } from "./content";
 
-const PracticeMaterialSection = () => {
+interface PracticeMaterialSectionProps {
+    data?: any;
+}
+
+const PracticeMaterialSection = ({ data }: PracticeMaterialSectionProps) => {
+    const content = data || practiceMaterialData;
+    const downloadMaterials = content.downloadMaterials || practiceMaterialData.downloadMaterials;
+    const studyTips = content.studyTips || practiceMaterialData.studyTips;
+    const whyPracticeHelp = content.whyPracticeHelp || practiceMaterialData.whyPraticeHelp;
+    const imageUrl = data?.image || practiceMaterialData.imageUrl;
+
     return (
         <div className="max-w-[1296px] w-full mx-auto">
             <div className="grid grid-cols-1 xl:grid-cols-[1.05fr_0.95fr] gap-8">
                 <div className="space-y-6">
-
                     <div className="flex items-start gap-3 max-w-[472px]">
                         <div className="relative flex-1 h-[368px] rounded-lg overflow-hidden aspect-[16/10]">
                             <Image
-                                src={practiceMaterialData.imageUrl}
-                                alt={practiceMaterialData.imageAlt}
+                                src={imageUrl}
+                                alt={content.imageAlt || practiceMaterialData.imageAlt}
                                 fill
                                 className="object-cover h-full w-full"
                                 priority
@@ -37,16 +46,26 @@ const PracticeMaterialSection = () => {
                             </div>
                         </div>
                         <div className="grid gap-4">
-                            {practiceMaterialData.downloadMaterials.map((material, index) => (
-                                <div key={index} className="group rounded-3xl w-fit bg-bg-grey p-5 shadow-[0px_0px_25px_0px_#5757561A]">
-                                    <p className="text-[22px] font-semibold text-slate mb-2 underline decoration-2 decoration-yellow-light underline-offset-4">{material.label}</p>
-                                    <div className="flex items-center gap-1 text-primary font-medium">
-                                    <p className="font-montserrat text-[18px] text-primary font-medium group-hover:">Download</p>
-                                    <Download className="w-5 h-5"/>
-                                    </div>
-                                    
-                                </div>
-                            ))}
+                            {downloadMaterials.map((material: any, index: number) => {
+                                const downloadUrl = material.fileUrl || material.externalLink || "#";
+                                return (
+                                    <a 
+                                        key={index} 
+                                        href={downloadUrl}
+                                        target={material.externalLink ? "_blank" : undefined}
+                                        rel={material.externalLink ? "noopener noreferrer" : undefined}
+                                        className="group rounded-3xl w-fit bg-bg-grey p-5 shadow-[0px_0px_25px_0px_#5757561A] hover:shadow-md transition-all cursor-pointer"
+                                    >
+                                        <p className="text-[22px] font-semibold text-slate mb-2 underline decoration-2 decoration-yellow-light underline-offset-4">
+                                            {material.label}
+                                        </p>
+                                        <div className="flex items-center gap-1 text-primary font-medium">
+                                            <p className="font-montserrat text-[18px] text-primary font-medium">Download</p>
+                                            <Download className="w-5 h-5"/>
+                                        </div>
+                                    </a>
+                                );
+                            })}
                         </div>
                     </div>
                 </div>
@@ -54,10 +73,10 @@ const PracticeMaterialSection = () => {
                 <div className="flex flex-col gap-8 py-2.5 px-0">
                     <div className="max-w-165">
                         <h2 className="text-4xl sm:text-[32px] font-bricolage font-normal text-slate-900 leading-8.5 mb-5">
-                            {practiceMaterialData.heading}
+                            {content.heading}
                         </h2>
-                        <p className="text-base sm:text-lg text-slate-700 leading-7 max-w-3xl">
-                            {practiceMaterialData.description}
+                        <p className="text-base sm:text-lg text-slate-700 leading-7 max-w-3xl whitespace-pre-wrap">
+                            {content.description}
                         </p>
                     </div>
 
@@ -73,8 +92,8 @@ const PracticeMaterialSection = () => {
                                     </h3>
                                 </div>
                             </div>
-                            <ul className="space-y-3 ml-1 text-[16px] leading-4 font-montserrat text-slate list-disc list-inside whitespace-break-spaces">
-                                {practiceMaterialData.studyTips.map((tip, index) => (
+                            <ul className="space-y-3 ml-1 text-[16px] leading-relaxed font-montserrat text-slate list-disc list-inside whitespace-pre-wrap">
+                                {studyTips.map((tip: any, index: number) => (
                                     <li key={index} className="py-2">
                                         <span className="font-medium text-slate">{tip.title}</span>: <span className="font-normal text-slate">{tip.description}</span>
                                     </li>
@@ -89,12 +108,12 @@ const PracticeMaterialSection = () => {
                                 </div>
                                 <div>
                                     <h3 className="text-[22px] font-bricolage font-display font-normal text-slate">
-                                        {practiceMaterialData.whyPraticeHelp.heading}
+                                        {whyPracticeHelp.heading}
                                     </h3>
                                 </div>
                             </div>
-                            <ul className="space-y-3 ml-1 text-[16px] leading-4 font-montserrat text-slate list-disc list-inside">
-                                {practiceMaterialData.whyPraticeHelp.pointers?.map((pointer, index) => (
+                            <ul className="space-y-3 ml-1 text-[16px] leading-relaxed font-montserrat text-slate list-disc list-inside">
+                                {whyPracticeHelp.pointers?.map((pointer: string, index: number) => (
                                     <li key={index} className="font-montserrat">
                                         {pointer}
                                     </li>
